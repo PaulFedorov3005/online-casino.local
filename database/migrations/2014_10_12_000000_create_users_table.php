@@ -17,6 +17,11 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer('wallet_id')->unsigned();
+
+
+            $table->index('wallet_id');
+            $table->foreign('wallet_id')->references('id')->on('wallets');
             $table->rememberToken();
             $table->timestamps();
         });
