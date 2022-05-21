@@ -21,7 +21,9 @@ class CreateUsersTable extends Migration
 
 
             $table->index('wallet_id');
-            $table->foreign('wallet_id')->references('id')->on('wallets');
+            $table->foreign('wallet_id')
+                  ->references('id')
+                  ->on('wallets');
             $table->rememberToken();
             $table->timestamps();
         });
