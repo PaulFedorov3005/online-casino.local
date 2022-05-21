@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Wallet;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -12,7 +13,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','wallet_id',
     ];
 
     /**
@@ -23,4 +24,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function wallet(){
+        $this->belongsTo(Wallet::class);
+    }
 }
