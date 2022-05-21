@@ -13,7 +13,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','wallet_id',
     ];
 
     /**
@@ -26,6 +26,6 @@ class User extends Authenticatable
     ];
 
     public function wallet(){
-        return $this->belongsTo(Wallet::class);
+        $this->belongsTo(Wallet::class);
     }
 }

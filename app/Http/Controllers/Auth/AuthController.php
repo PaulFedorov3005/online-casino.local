@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Wallet;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -63,10 +64,17 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+
+        Wallet::create([
+            'count'=>0
+        ]);
+        $wallets = Wallet::all()->toArray();
+        $wallet = array_pop($wallets);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'wallet_id' => $wallet['id'],
         ]);
     }
 }
