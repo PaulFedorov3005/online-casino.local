@@ -26,6 +26,6 @@ class User extends Authenticatable
     ];
 
     public function wallets(){
-        $this->belongsTo(Wallet::class);
+        return $this->belongsTo(Wallet::class);
     }
 }
