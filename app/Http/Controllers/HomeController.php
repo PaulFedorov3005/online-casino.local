@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-class GameController extends Controller
+class HomeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,6 +24,6 @@ class GameController extends Controller
      */
     public function index()
     {
-        return view('game');
+        return view('home');
     }
 }
