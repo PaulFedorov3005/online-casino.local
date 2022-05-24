@@ -52,6 +52,7 @@ class WalletController extends Controller
     }
 
     public function output(Request $request){
+        $errors = [];
         $outputNum = (int) $request->output;
         $id = Auth::user()->wallet_id;
         $walletTest = Wallet::findOrFail($id);
@@ -60,7 +61,10 @@ class WalletController extends Controller
             $res = $count - $outputNum ;
             $walletTest->count = $res;
             $walletTest->save();
+        }else{
+            $errors [] = 'not enough money for output';
         }
-        return redirect(route('wallet.index'));
+
+        return redirect(route('wallet.index'))->withErrors($errors);
     }
 }
