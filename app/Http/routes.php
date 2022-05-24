@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/game', 'GameController@index')->name('game.index');
-Route::get('/wallet', 'WalletController@index')->name('wallet.index');
-Route::get('/account', 'AccountController@index')->name('account.index');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/game', 'GameController@index')->name('game.index');
+    Route::get('/wallet', 'WalletController@index')->name('wallet.index');
+    Route::get('/account', 'AccountController@index')->name('account.index');
+    Route::put('update', 'AccountController@update')->name('account.update');
+});
+
