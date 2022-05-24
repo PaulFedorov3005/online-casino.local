@@ -26,6 +26,6 @@ class User extends Authenticatable
     ];
 
     public function wallets(){
-        return $this->belongsTo(Wallet::class);
+        return $this->belongsTo(Wallet::class, 'wallet_id');
     }
 }

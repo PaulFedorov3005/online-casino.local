@@ -12,6 +12,6 @@ class Wallet extends Model
     ];
 
     public function user(){
-        return $this->hasOne(User::class);
+        return $this->hasOne(User::class, 'wallet_id');
     }
 }

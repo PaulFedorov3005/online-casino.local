@@ -35,7 +35,8 @@ class WalletController extends Controller
         return view('wallet', ['count'=>$count, 'countNum'=>$countNum]);
     }
 
-    public function input(Wallet $wallet, Request $request){
+    public function input( Request $request){
+//        dd(Auth::user()->wallets()); TODO ask Anton why it dont work
         $inputNum = (int) $request->input;
         $id = Auth::user()->wallet_id;
         $walletTest = Wallet::findOrFail($id);
@@ -43,11 +44,6 @@ class WalletController extends Controller
         $sum = $inputNum + $count;
         $walletTest->count = $sum;
         $walletTest->save();
-//        $wallet->update();
-//        Wallet::findOrFail($id)->count = $sum;
-//        Wallet::updated();
-//        Auth::user()->wallets()->update();
-
         return redirect(route('wallet.index'));
     }
 
