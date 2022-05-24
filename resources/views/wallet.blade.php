@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('common.errors')
 <div class="col-md-10 col-md-offset-1 mainWallet">
             <div class="panel panel-default">
                 <div class="panel-heading general">Wallet</div>
