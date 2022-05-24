@@ -32,15 +32,17 @@ class AccountController extends Controller
         return view('account');
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-//        $this->authorize('owner', $request);
-//        $this->validate($request, [
-//            'name' => 'required|max:255',
-//            'email' => 'required|email|max:255|unique:users',
-//            'password' => 'required|min:6|confirmed',
-//        ]);
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'required|min:6',
+        ]);
+
         $user = Auth::user();
+        $wallet = $user->wallet;
+        $this->authorize('owner', $wallet);
 
         $user->name = $request->name;
         $user->email = $request->email;

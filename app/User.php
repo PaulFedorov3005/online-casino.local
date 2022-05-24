@@ -25,7 +25,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function wallets(){
+    public function wallet(){
         return $this->belongsTo(Wallet::class);
     }
 }
