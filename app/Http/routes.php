@@ -23,7 +23,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/wallet/input', 'WalletController@input')->name('wallet.input');
     Route::post('/wallet/output', 'WalletController@output')->name('wallet.output');
     Route::get('/account', 'AccountController@index')->name('account.index');
-    Route::put('update', 'AccountController@update')->name('account.update');
+    Route::put('/update', 'AccountController@update')->name('account.update');
 });
 
 

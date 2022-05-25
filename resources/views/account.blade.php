@@ -7,6 +7,7 @@
         <h3 class="panel-title">Your Account</h3>
     </div>
     <div class="panel-body">
+        @include('common.errors')
         Panel for editing personal data
         <div style="display: flex; align-items: center; justify-content: center">
             <form style="width: 50%;" action="{{route('account.update', Auth::user()->id )}}" method="POST">
