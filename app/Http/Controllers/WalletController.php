@@ -35,28 +35,26 @@ class WalletController extends Controller
         return view('wallet', ['count'=>$count, 'countNum'=>$countNum]);
     }
 
-    public function input( Request $request){
-//        dd(Auth::user()->wallets()); TODO ask Anton why it dont work
+    public function input(Request $request){
         $inputNum = (int) $request->input;
-        $id = Auth::user()->wallet_id;
-        $walletTest = Wallet::findOrFail($id);
-        $count = (int) $walletTest->count;
+        $wallet = Auth::user()->wallets;
+        $count = (int) $wallet->count;
         $sum = $inputNum + $count;
-        $walletTest->count = $sum;
-        $walletTest->save();
+        $wallet->count = $sum;
+        $wallet->save();
         return redirect(route('wallet.index'));
     }
 
     public function output(Request $request){
         $errors = [];
         $outputNum = (int) $request->output;
-        $id = Auth::user()->wallet_id;
-        $walletTest = Wallet::findOrFail($id);
-        $count = (int) $walletTest->count;
-        if ($count>$outputNum){
+        $wallet = Auth::user()->wallets;
+
+        $count = (int) $wallet->count;
+        if ($count>=$outputNum){
             $res = $count - $outputNum ;
-            $walletTest->count = $res;
-            $walletTest->save();
+            $wallet->count = $res;
+            $wallet->save();
         }else{
             $errors [] = 'not enough money for output';
         }
