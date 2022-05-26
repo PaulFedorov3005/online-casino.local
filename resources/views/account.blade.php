@@ -2,11 +2,11 @@
 
 @section('content')
 
-<div class="panel panel-default" >
+<div class="panel panel-default" style="margin-top: 20px">
     <div class="panel-heading">
         <h3 class="panel-title">Your Account</h3>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" style="box-shadow: 0 0 10px #9d9d9d;">
         @include('common.errors')
         Panel for editing personal data
         <div style="display: flex; align-items: center; justify-content: center">

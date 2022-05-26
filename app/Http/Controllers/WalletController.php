@@ -37,7 +37,7 @@ class WalletController extends Controller
 
     public function input(Request $request){
         $inputNum = (int) $request->input;
-        $wallet = Auth::user()->wallets;
+        $wallet = Auth::user()->wallet;
         $count = (int) $wallet->count;
         $sum = $inputNum + $count;
         $wallet->count = $sum;
@@ -48,8 +48,7 @@ class WalletController extends Controller
     public function output(Request $request){
         $errors = [];
         $outputNum = (int) $request->output;
-        $wallet = Auth::user()->wallets;
-
+        $wallet = Auth::user()->wallet;
         $count = (int) $wallet->count;
         if ($count>=$outputNum){
             $res = $count - $outputNum ;
