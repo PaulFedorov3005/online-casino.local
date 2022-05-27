@@ -2,7 +2,8 @@
 
 @section('content')
 
-{{--    <img src="public/images/background.png" alt="Здесь должна быть картинка, но она какого-то хера не работает">--}}
+    <img src="../../public/images/background.png" alt="Здесь должна быть картинка, но она естественно не работает">
+
 
 <div class="jumbotron">
     <h1>Hello my dear friend</h1>

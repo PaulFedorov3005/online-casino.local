@@ -71,7 +71,10 @@
         </div>
     </nav>
 
-    @yield('content')
+    <div style="min-height: 650px; background-color: aqua">
+        @yield('content')
+    </div>
+
 
     <footer class="fixed-bottom bg-light text-center text-lg-start">
         <!-- Copyright -->
