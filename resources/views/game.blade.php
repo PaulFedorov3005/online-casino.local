@@ -11,6 +11,7 @@
                     <label>Your bet:
                         <input type="number" name="bet">
                     </label>
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 </form>
         </div>
         <div class="lost"></div>

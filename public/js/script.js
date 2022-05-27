@@ -3,15 +3,36 @@ let roll = document.querySelector('.rollet');
 let num = document.querySelector('.num');
 let win = document.querySelector('.win');
 let lost = document.querySelector('.lost');
+let csrf_token = document.forms[0].csrf_token.value;
 let betNumStr = document.forms[0].num;
 let betSum = document.forms[0].bet;
-let wallet = 2000;
 
+let wallet = 0;
+function getCount(){
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function (){
+        if (xhr.readyState === 4){
+            if (xhr.status === 200){
+                let textWallet = xhr.responseText;
+                wallet = +textWallet;
+            }else {
+                alert('Some problem with request');
+                console.error('request wallet are failed with status' + xhr.status+' '+xhr.statusText);
+            }
+        }
+    };
+    xhr.open('GET', '/api');
+    // xhr.setRequestHeader('_token', csrf_token);
+    xhr.send();
+}
 
+getCount();
 function rand (start = 0, finish = 12){
     return Math.random() * (finish - start + 1);
 }
 btn.onclick = function () {
+
+
     let total = +betSum.value;
     if (total>=50){
         if (wallet>=total){
@@ -35,6 +56,20 @@ btn.onclick = function () {
                     lost.style.display = 'block';
                     lost.innerHTML = `<h2>unfortunately , you are lost ${total}$!</h2><div>Wallet : ${wallet}$</div>`;
                 }
+
+                let xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function (){
+                    if (xhr.readyState === 4){
+                        if (xhr.status === 200){
+                            alert('update wallet');
+                            getCount();
+                        }
+                    }
+                };
+                xhr.open('POST', '/api');
+                let data = wallet+'';
+                xhr.setRequestHeader('_token', csrf_token);
+                xhr.send(data);
             }, 2000);
         }else{
             win.style.display = 'none';
