@@ -1,1 +1,107 @@
+.main{
+    background-color: #099100;
+    position: relative;
+    min-width: 1200px;
+    height: 88vh;
+}
 
+.rollet{
+    background-image: url("../images/roulette.png");
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    left: calc(50% - 175px);
+    top: 0;
+    background-size: 100%;
+
+    font-size: 30px;
+    display: block;
+    animation-play-state: paused;
+    animation-name: loader;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes loader{
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(360deg);
+    }
+    100%{
+        transform: rotate(720deg);
+    }
+
+}
+.count{
+    width: 125px;
+    height: 125px;
+    border-radius: 70px;
+    background-color: #ffffff;
+    position: absolute;
+    left: calc(50% - 63px);
+    top: 112px;
+    text-align: center;
+    font-size: 23px;
+    padding-top: 20px;
+}
+.button{
+    width: 100px;
+    height: 50px;
+    background-color: #ff3600;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 27px;
+    color: #ffffff;
+    position: absolute;
+    left: calc(50% - 50px);
+    top: 350px;
+}
+.gameForm{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 300px;
+}
+.gameForm label{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    font-size: 20px;
+}
+.helper{
+
+}
+.cont{
+    position: absolute;
+    left: calc(8%);
+
+    top: 100px;
+}
+.win{
+    display: none;
+    width: 400px;
+    height: 200px;
+    background-color: #ffb82a;
+    position: absolute;
+    right: 75px;
+    top: 80px;
+    border-radius: 30px;
+    padding: 10px;
+}
+.lost{
+    display: none;
+    width: 400px;
+    height: 200px;
+    background-color: #ff4632;
+    color: #ffffff;
+    position: absolute;
+    right: 75px;
+    top: 80px;
+    border-radius: 30px;
+    padding: 10px;
+}
+footer{
+
+}
