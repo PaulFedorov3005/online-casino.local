@@ -25,8 +25,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/account', 'AccountController@index')->name('account.index');
     Route::put('/update', 'AccountController@update')->name('account.update');
 
-    Route::get('/api', 'ApiController@getCount')->name('api.getCount');
-    Route::post('/api', 'ApiController@update')->name('api.update');
+        Route::group(['prefix' => 'api'], function() {
+            Route::get('/', 'ApiController@getCount')->name('api.getCount');
+            Route::post('/', 'ApiController@update')->name('api.update');
+        });
+
+
 });
 
 
