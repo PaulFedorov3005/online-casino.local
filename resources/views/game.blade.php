@@ -3,7 +3,8 @@
 @section('content')
     <main class="main">
         <div class="cont">
-                <form action="/" method="post" class="gameForm" name="bet">
+                <form action="/api" method="post" class="gameForm" name="bet">
+                    {{ csrf_field() }}
                     <label>Your number:
                         <input type="number" name="num">
                     </label>
@@ -11,7 +12,8 @@
                     <label>Your bet:
                         <input type="number" name="bet">
                     </label>
-                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+{{--                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">--}}
+                    <input type="hidden" name="wallet" value="55">
                 </form>
         </div>
         <div class="lost"></div>

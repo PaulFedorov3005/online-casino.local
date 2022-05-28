@@ -3,9 +3,12 @@ let roll = document.querySelector('.rollet');
 let num = document.querySelector('.num');
 let win = document.querySelector('.win');
 let lost = document.querySelector('.lost');
-let csrf_token = document.forms[0].csrf_token.value;
+let btnWallet = document.querySelector('.btnWallet');
+let form = document.forms[0];
+// let csrf_token = document.forms[0].csrf_token.value;
 let betNumStr = document.forms[0].num;
 let betSum = document.forms[0].bet;
+
 
 let wallet = 0;
 function getCount(){
@@ -56,20 +59,26 @@ btn.onclick = function () {
                     lost.style.display = 'block';
                     lost.innerHTML = `<h2>unfortunately , you are lost ${total}$!</h2><div>Wallet : ${wallet}$</div>`;
                 }
-
+                document.forms[0].wallet.value = wallet;
                 let xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function (){
                     if (xhr.readyState === 4){
                         if (xhr.status === 200){
-                            alert('update wallet');
                             getCount();
+                            btnWallet.innerText ='Count: ' + wallet + '.00' + ' $';
                         }
                     }
                 };
-                xhr.open('POST', '/api');
-                let data = wallet+'';
-                xhr.setRequestHeader('_token', csrf_token);
-                xhr.send(data);
+                let method = form.method;
+                console.log(method);
+                let url = form.action;
+                xhr.open(method, url);
+                // xhr.open('POST', '/api');
+                // let data = wallet;
+                // xhr.setRequestHeader('_token', csrf_token);
+                // xhr.send(data);
+                let fromData = new FormData(form);
+                xhr.send(fromData);
             }, 2000);
         }else{
             win.style.display = 'none';

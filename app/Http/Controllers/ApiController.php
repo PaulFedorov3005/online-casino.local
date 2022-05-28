@@ -26,12 +26,10 @@ class ApiController extends Controller
         return $count = (int) $wallet->count;
     }
 
-    public function update()
+    public function update(Request $request)
     {
-        dd($_POST);
         $wallet = Auth::user()->wallet;
-        $wallet->count = $request->count;
+        $wallet->count = $request->wallet;
         $wallet->update();
-
     }
 }

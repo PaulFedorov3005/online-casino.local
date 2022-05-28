@@ -62,7 +62,7 @@
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                         <li><a href="{{ route('game.index') }}"> Game </a></li>
-                        <li><a href="{{ route('wallet.index') }}">Count: {{ App\Models\Wallet::findOrFail(Auth::user()->wallet_id)['count'] }} $</a></li>
+                        <li><a href="{{ route('wallet.index') }}" class="btnWallet">Count: {{ App\Models\Wallet::findOrFail(Auth::user()->wallet_id)['count'] }} $</a></li>
                         <li><a href="{{ route('account.index') }}"> Account </a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
